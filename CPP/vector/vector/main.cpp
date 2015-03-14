@@ -14,13 +14,14 @@ static bool descendCompare(const int &a, const int &b)
     return a>b;
 }
 
-int main()
+int main(void)
 {
     vector<int> vect;
     int i=0;
 
     for(i=0; i<10; i++)
     {
+        cout << "capacity " << vect.capacity() << endl;
         vect.push_back(10-i);
     }
 
@@ -31,6 +32,15 @@ int main()
     {
         cout<<*it<<endl;
     }
+
+    for(i=0; i<10; i++)
+    {
+        cout << "capacity " << vect.capacity() << endl;
+        vect.pop_back();
+    }
+
+    vect.shrink_to_fit();
+    cout << "capacity " << vect.capacity() << endl;
 
     cout << "-------------------------------------" << endl;
 
