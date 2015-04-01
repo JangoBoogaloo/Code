@@ -1,14 +1,14 @@
-PROJECT := program
+PROJECT :=program
 SCRIPT :=$(PROJECT) #add arguments
 
 #set the compiler option
-CFLAGS := -Wall \
-				  -pedantic \
-				  -Wextra \
-				  -Wno-missing-field-initializers \
-				  -g
+CFLAGS :=-Wall \
+				 -pedantic \
+				 -Wextra \
+				 -Wno-missing-field-initializers \
+				 -g
 
-CC := g++
+CC :=clang++
 
 OBJECT_DIR :=obj/
 SOURCE_DIR :=src/
@@ -24,7 +24,7 @@ OBJECTS :=$(SOURCES:$(SOURCE_DIR)%.c=$(OBJECT_DIR)%.o)
 $(PROJECT): $(OBJECTS)
 	$(CC) $(CFLAGS) $(INCLUDES) -o $(PROJECT) $(OBJECTS) $(LD_LIBS)
 
-$(OBJECT_DIR)%.o: $(SOURCE_DIR)%.c
+$(OBJECT_DIR)%.o: $(SOURCE_DIR)%.cpp
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 all: $(PROJECT) $(OBJECTS)
